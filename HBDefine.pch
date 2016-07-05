@@ -1,0 +1,132 @@
+//
+//  HBDefine.pch
+//  test
+//
+//  Created by alex on 16/7/5.
+//  Copyright © 2016年 alex. All rights reserved.
+//
+
+//--------------------打印------------------------
+#ifdef DEBUG
+#   define KLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+#   define KLog(...)
+#endif
+
+//--------------------尺寸------------------------
+/** 状态栏高度 */
+#define KStatusBar_HEIGHT 20
+/** 导航条高度 */
+#define KNavigationBar_HEIGHT 44
+
+#define KNavigationBarIcon 20
+
+#define KTabBar_HEIGHT 49
+
+#define KTabBarIcon 30
+/* 屏幕宽度 */
+#define KScreen_Width ([UIScreen mainScreen].bounds.size.width)
+/** 屏幕高度 */
+#define KScreen_Height ([UIScreen mainScreen].bounds.size.height)
+/** 屏幕bounds */
+#define KScreen_Bounds ([UIScreen mainScreen].bounds.size.height)
+
+//--------------------系统宏------------------------
+/** 获取系统版本 */
+#define KIOS_Version_FloatValue [[[UIDevice currentDevice] systemVersion] floatValue]
+/** 获取系统版本 */
+#define KIOS_Version_String [[UIDevice currentDevice] systemVersion]
+//获取当前语言
+#define KCurrentLanguage ([[NSLocale preferredLanguages] objectAtIndex:0])
+
+//检查系统版本
+#define KSystem_Version_Equal_To(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
+#define KSystem_Version_Greater_Than(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
+#define KSystem_Version_Greater_Than_Or_Equal_To(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define KSystem_Version_Less_Than(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+#define KSystem_Version_Less_Than_Or_Equal_To(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
+
+//--------------------图片相关-------------------
+//读取本地图片
+#define KLoadImage(file,ext) [UIImage imageWithContentsOfFile:[[NSBundle mainBundle]pathForResource:file ofType:ext]]
+
+//定义UIImage对象
+#define KImage(A) [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:A ofType:nil]]
+
+//定义UIImage对象
+#define KImageNamed(_pointer) [UIImage imageNamed:[UIUtil imageName:_pointer]]
+
+
+//-------------------颜色相关------------------
+// rgb颜色转换（16进制->10进制）
+#define KColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
+//带有RGBA的颜色设置
+#define KColor_RGBA(R, G, B, A) [UIColor colorWithRed:R/255.0 green:G/255.0 blue:B/255.0 alpha:A]
+
+#define KColor_RGB(r,g,b) RGBA(r,g,b,1.0f)
+
+//清除背景色
+#define KClearColor [UIColor clearColor]
+
+
+//-----------------------API相关
+//定义一个API
+#define KAPIURL                @"http://xxxxx/"
+
+
+
+//G－C－D
+#define KBACK(block) dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), block)
+#define KMAIN(block) dispatch_async(dispatch_get_main_queue(),block)
+
+//NSUserDefaults 实例化
+#define KUser_Defult [NSUserDefaults standardUserDefaults]
+
+
+//由角度获取弧度 有弧度获取角度
+#define degreesToRadian(x) (M_PI * (x) / 180.0)
+#define radianToDegrees(radian) (radian*180.0)/(M_PI)
+
+//单利
+#define KSingleten_For_Class(classname) \
+\
+static classname *shared##classname = nil; \
+\
++ (classname *)shared##classname \
+{ \
+@synchronized(self) \
+{ \
+if (shared##classname == nil) \
+{ \
+shared##classname = [[self alloc] init]; \
+} \
+} \
+\
+return shared##classname; \
+} \
+\
++ (id)allocWithZone:(NSZone *)zone \
+{ \
+@synchronized(self) \
+{ \
+if (shared##classname == nil) \
+{ \
+shared##classname = [super allocWithZone:zone]; \
+return shared##classname; \
+} \
+} \
+\
+return nil; \
+} \
+\
+- (id)copyWithZone:(NSZone *)zone \
+{ \
+return self; \
+}
+
+
+
+
+
+
