@@ -5,6 +5,7 @@
 //  Created by alex on 16/7/5.
 //  Copyright © 2016年 alex. All rights reserved.
 //
+//--------------------头文件
 
 //--------------------打印------------------------
 #ifdef DEBUG
@@ -32,6 +33,14 @@
 #define KScreen_Bounds ([UIScreen mainScreen].bounds.size.height)
 
 //--------------------系统宏------------------------
+
+/** 沙盒路径 */
+#define KDocumentPath       [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]
+
+/** 偏好 */
+#define KUser_Default [NSUserDefaults standardUserDefaults]
+/** 通知中心 */
+#define KNotification_Center [NSNotificationCenter defaultCenter]
 /** 获取系统版本 */
 #define KIOS_Version_FloatValue [[[UIDevice currentDevice] systemVersion] floatValue]
 /** 获取系统版本 */
@@ -72,17 +81,15 @@
 
 //-----------------------API相关
 //定义一个API
-#define KAPIURL                @"http://xxxxx/"
+#define KAPIURL                 @""
+#define KPublic_Key             @""
+#define KPrivate_Key            @""
 
 
 
 //G－C－D
 #define KBACK(block) dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), block)
 #define KMAIN(block) dispatch_async(dispatch_get_main_queue(),block)
-
-//NSUserDefaults 实例化
-#define KUser_Defult [NSUserDefaults standardUserDefaults]
-
 
 //由角度获取弧度 有弧度获取角度
 #define degreesToRadian(x) (M_PI * (x) / 180.0)
