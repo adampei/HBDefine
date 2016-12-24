@@ -78,62 +78,12 @@
 //清除背景色
 #define KClearColor [UIColor clearColor]
 
-
 //-----------------------API相关
 //定义一个API
 #define KAPIURL                 @""
 #define KPublic_Key             @""
 #define KPrivate_Key            @""
 
-
-
-//G－C－D
-#define KBACK(block) dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), block)
-#define KMAIN(block) dispatch_async(dispatch_get_main_queue(),block)
-
 //由角度获取弧度 有弧度获取角度
 #define degreesToRadian(x) (M_PI * (x) / 180.0)
 #define radianToDegrees(radian) (radian*180.0)/(M_PI)
-
-//单利
-#define KSingleten_For_Class(classname) \
-\
-static classname *shared##classname = nil; \
-\
-+ (classname *)shared##classname \
-{ \
-@synchronized(self) \
-{ \
-if (shared##classname == nil) \
-{ \
-shared##classname = [[self alloc] init]; \
-} \
-} \
-\
-return shared##classname; \
-} \
-\
-+ (id)allocWithZone:(NSZone *)zone \
-{ \
-@synchronized(self) \
-{ \
-if (shared##classname == nil) \
-{ \
-shared##classname = [super allocWithZone:zone]; \
-return shared##classname; \
-} \
-} \
-\
-return nil; \
-} \
-\
-- (id)copyWithZone:(NSZone *)zone \
-{ \
-return self; \
-}
-
-
-
-
-
-
