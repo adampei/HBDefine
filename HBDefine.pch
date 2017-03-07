@@ -9,10 +9,16 @@
 
 //--------------------打印------------------------
 #ifdef DEBUG
-#   define KLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#define KLog(format, ...) printf("\n[%s] %s [第%d行] %s\n", __TIME__, __FUNCTION__, __LINE__, [[NSString stringWithFormat:format, ## __VA_ARGS__] UTF8String]);
 #else
-#   define KLog(...)
+#define KLog(format, ...)
 #endif
+
+//屏幕适配 宽高 以4.0寸为基准
+#define KAuto_Width(value) ((value)/320.0f*[UIScreen mainScreen].bounds.size.width)
+#define KAuto_Height(value) ((value)/568.0f*[UIScreen mainScreen].bounds.size.height)
+
+
 
 //--------------------尺寸------------------------
 /** 状态栏高度 */
@@ -58,12 +64,8 @@
 //--------------------图片相关-------------------
 //读取本地图片
 #define KLoadImage(file,ext) [UIImage imageWithContentsOfFile:[[NSBundle mainBundle]pathForResource:file ofType:ext]]
-
 //定义UIImage对象
-#define KImage(A) [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:A ofType:nil]]
-
-//定义UIImage对象
-#define KImageNamed(_pointer) [UIImage imageNamed:[UIUtil imageName:_pointer]]
+#define KImageNamed(_pointer) [UIImage imageNamed:_pointer]
 
 
 //-------------------颜色相关------------------
@@ -73,16 +75,16 @@
 //带有RGBA的颜色设置
 #define KColor_RGBA(R, G, B, A) [UIColor colorWithRed:R/255.0 green:G/255.0 blue:B/255.0 alpha:A]
 
-#define KColor_RGB(r,g,b) RGBA(r,g,b,1.0f)
 
 //清除背景色
-#define KClearColor [UIColor clearColor]
+#define KClEAR_COLOR [UIColor clearColor]
+#define KWHITE_COLOR    [UIColor whiteColor]
+#define KORANGE_COLOR  [UIColor orangeColor]
+#define KBLACK_COLOR  [UIColor blackColor]
 
 //-----------------------API相关
 //定义一个API
 #define KAPIURL                 @""
-#define KPublic_Key             @""
-#define KPrivate_Key            @""
 
 //由角度获取弧度 有弧度获取角度
 #define degreesToRadian(x) (M_PI * (x) / 180.0)
