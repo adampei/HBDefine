@@ -15,28 +15,24 @@
 #endif
 
 //屏幕适配 宽高 以4.0寸为基准
-#define KAuto_Width(value) ((value)/320.0f*[UIScreen mainScreen].bounds.size.width)
-#define KAuto_Height(value) ((value)/568.0f*[UIScreen mainScreen].bounds.size.height)
+#define KAUTO_WIDTH(value) ((value)/320.0f*[UIScreen mainScreen].bounds.size.width)
+#define KAUTO_HEIGHT(value) ((value)/568.0f*[UIScreen mainScreen].bounds.size.height)
 
 
 
 //--------------------尺寸------------------------
 /** 状态栏高度 */
-#define KStatusBar_HEIGHT 20
+#define KSTATUSBAR_HEIGHT 20
 /** 导航条高度 */
-#define KNavigationBar_HEIGHT 44
+#define KNAVIGATIONBAR_HEIGHT 44
+#define KTABBAR_HEIGHT 49
 
-#define KNavigationBarIcon 20
-
-#define KTabBar_HEIGHT 49
-
-#define KTabBarIcon 30
 /* 屏幕宽度 */
-#define KScreen_Width ([UIScreen mainScreen].bounds.size.width)
+#define KSCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
 /** 屏幕高度 */
-#define KScreen_Height ([UIScreen mainScreen].bounds.size.height)
+#define KSCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
 /** 屏幕bounds */
-#define KScreen_Bounds ([UIScreen mainScreen].bounds.size.height)
+#define KSCREEN_BOUNDS ([UIScreen mainScreen].bounds.size.height)
 
 //--------------------系统宏------------------------
 
@@ -44,9 +40,9 @@
 #define KDocumentPath       [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]
 
 /** 偏好 */
-#define KUser_Default [NSUserDefaults standardUserDefaults]
+#define KUSER_DEFAULT [NSUserDefaults standardUserDefaults]
 /** 通知中心 */
-#define KNotification_Center [NSNotificationCenter defaultCenter]
+#define KNOTIFICATIN_CENTER [NSNotificationCenter defaultCenter]
 /** 获取系统版本 */
 #define KIOS_Version_FloatValue [[[UIDevice currentDevice] systemVersion] floatValue]
 /** 获取系统版本 */
