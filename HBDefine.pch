@@ -5,6 +5,13 @@
 //  Created by alex on 16/7/5.
 //  Copyright © 2016年 alex. All rights reserved.
 //
+
+// 线程相关
+// 锁线程
+#define LOCK(lock) dispatch_semaphore_wait(lock, DISPATCH_TIME_FOREVER);
+// 解锁线程 配合 dispatch_semaphore_t使用
+#define UNLOCK(lock) dispatch_semaphore_signal(lock);
+
 //--------------------头文件
 
 //--------------------打印------------------------
