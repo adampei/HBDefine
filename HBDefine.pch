@@ -50,7 +50,7 @@
 /** 屏幕高度 */
 #define KSCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
 /** 屏幕bounds */
-#define KSCREEN_BOUNDS ([UIScreen mainScreen].bounds.size.height)
+#define KSCREEN_BOUNDS ([UIScreen mainScreen].bounds)
 
 //--------------------系统宏------------------------
 
